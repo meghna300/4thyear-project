@@ -1,0 +1,18 @@
+<div class="container section">
+    <h2 class="section-heading">Brain Tumor Detection</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+    <div class="upload-container">
+        <div class="dotted-container">
+            <p>Uplaod X-ray image:</p>
+         <input #file type="file" class="choose-file" accept="image/png,image/jpeg" (change)="fileEvent($event)">
+        </div>
+    </div>
+    <button class="btn" (click)="showResult()">Upload Image</button>
+    <div class="result">
+       Result: {{result}}
+    </div>
+    </div>
+</div>
+</div>
+

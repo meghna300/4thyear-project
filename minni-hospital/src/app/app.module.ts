@@ -3,15 +3,26 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BoneFractureComponent } from './bone-fracture/bone-fracture.component';
+import { BrainTumorComponent } from './brain-tumor/brain-tumor.component';
+import { BloodReportComponent } from './blood-report/blood-report.component';
+import { NearbyComponent } from './nearby/nearby.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BoneFractureComponent,
+    BrainTumorComponent,
+    BloodReportComponent,
+    NearbyComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
