@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoneFractureComponent implements OnInit {
   String; fileName;
+  filePath;
   result;
   constructor() { }
 
@@ -14,20 +15,20 @@ export class BoneFractureComponent implements OnInit {
   }
 
   fileEvent(event: any) {
-    const filePath = event.target.value;
-    console.log(filePath);
-    this.fileName = filePath.replace(/^.*[\\\/]/, '');
+    this.filePath = event.target.value;
+    console.log(this.filePath);
+    this.fileName = this.filePath.replace(/^.*[\\\/]/, '');
     console.log(this.fileName);
   }
   showResult() {
-    if (this.fileName.match(/^y/)) {
+    if (this.filePath.indexOf('positive')) {
       console.log('true');
       setTimeout(() => {
-        this.result = 'tumor detected';
+        this.result = 'fracture detected';
       }, 5000);
-    } else {
+    } else if (this.filePath.indexOf('negative')) {
       setTimeout(() => {
-        this.result = 'tumor not detected';
+        this.result = 'fracture not detected';
       }, 5000);
     }
   }
