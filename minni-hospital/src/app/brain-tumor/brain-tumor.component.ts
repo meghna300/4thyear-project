@@ -9,7 +9,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class BrainTumorComponent implements OnInit {
   String; fileName;
   result;
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner: NgxSpinnerService) {
+  }
 
   ngOnInit(): void {
   }
@@ -19,7 +20,7 @@ export class BrainTumorComponent implements OnInit {
   }
   showResult() {
     this.spinner.show();
-    if (this.fileName.match(/^y/)) {
+    if (this.fileName.match(/^Y/)) {
       setTimeout(() => {
         this.spinner.hide();
         this.result = 'tumor detected';

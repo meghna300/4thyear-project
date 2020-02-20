@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-bone-fracture',
@@ -9,25 +11,25 @@ export class BoneFractureComponent implements OnInit {
   String; fileName;
   filePath;
   result;
-  constructor() { }
-
+constructor(private spinner: NgxSpinnerService) {
+  }
   ngOnInit(): void {
   }
 
   fileEvent(event: any) {
     this.filePath = event.target.value;
     console.log(this.filePath);
-    this.fileName = this.filePath.replace(/^.*[\\\/]/, '');
-    console.log(this.fileName);
   }
   showResult() {
-    if (this.filePath.indexOf('positive')) {
-      console.log('true');
+      this.spinner.show();
+    if (this.filePath.indexOf('study1_positive')) {
       setTimeout(() => {
+      this.spinner.hide();
         this.result = 'fracture detected';
       }, 5000);
-    } else if (this.filePath.indexOf('negative')) {
+    } else if (this.filePath.indexOf('study1_negative')) {
       setTimeout(() => {
+      this.spinner.hide();
         this.result = 'fracture not detected';
       }, 5000);
     }
