@@ -12,6 +12,7 @@ export class BoneFractureComponent implements OnInit {
   String; fileName;
   filePath;
   result;
+  isLoading = false;
   public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'photo' });
   constructor() {
   }
@@ -21,12 +22,15 @@ export class BoneFractureComponent implements OnInit {
     // overide the onCompleteItem property of the uploader so we are
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.isLoading = false;
       console.log('ImageUpload:uploaded:', item, status, response);
       console.log(JSON.parse(response)[5]);
       this.result  = JSON.parse(response)[5];
     };
   }
-
+  loader() {
+    this.isLoading = true;
+  }
   // fileEvent(event: any) {
   //   this.filePath = event.target.value;
   //   console.log(this.filePath);

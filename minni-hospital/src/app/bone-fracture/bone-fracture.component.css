@@ -19,11 +19,15 @@
 }
 .btn{
     display:block;
-    margin:auto;
     background-color:#d50000;
     color: #ffffff;
 }
 .result{
     margin: 10px;
+    text-align: center;
+}
+.loader{
+    width:50px;
+    display: inline;
     text-align: center;
 }

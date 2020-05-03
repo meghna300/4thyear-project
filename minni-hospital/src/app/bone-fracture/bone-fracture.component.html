@@ -8,8 +8,10 @@
                     <input type="file" accept="image/png,image/jpeg" ng2FileSelect [uploader]="uploader">
                 </div>
             </div>
-            <button class="btn" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload Image</button>
-            <!-- <ngx-spinner></ngx-spinner> -->
+            <div class="row justify-content-center">
+            <button class="btn col-md-3" (click)="uploader.uploadAll(); loader();" [disabled]="!uploader.getNotUploadedItems().length">Upload Image</button> 
+            <img class="loader col-md-" *ngIf="isLoading" src="../../assets/loader.svg" />
+            </div>
             <div class="result">
                 Result: {{result}}
             </div>

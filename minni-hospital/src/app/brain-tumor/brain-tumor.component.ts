@@ -11,6 +11,7 @@ const URL = 'https://api-mini-hospital.herokuapp.com/api/bone';
 export class BrainTumorComponent implements OnInit {
   String; fileName;
   result;
+  isLoading = false;
   public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'photo' });
 
   constructor(private spinner: NgxSpinnerService) {
@@ -22,10 +23,14 @@ export class BrainTumorComponent implements OnInit {
     // overide the onCompleteItem property of the uploader so we are
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.isLoading = false;
       console.log('ImageUpload:uploaded:', item, status, response);
-      console.log(JSON.parse(response)[5]);
-      this.result = JSON.parse(response)[5];
+      console.log(JSON.parse(response)[3]);
+      this.result = JSON.parse(response)[3];
     };
+  }
+  loader() {
+    this.isLoading = true;
   }
   // fileEvent(event: any) {
   //   const filePath = event.target.value;
