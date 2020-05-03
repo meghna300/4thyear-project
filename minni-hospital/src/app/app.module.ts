@@ -9,7 +9,7 @@ import { BrainTumorComponent } from './brain-tumor/brain-tumor.component';
 import { BloodReportComponent } from './blood-report/blood-report.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -25,7 +25,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgbModule,
     AppRoutingModule,
     NgxSpinnerModule,
-    FileUploadModule
+    FileUploadModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDDkQTBSz8E4vr8wRYu88Tmdb0jdX2B_8E',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
