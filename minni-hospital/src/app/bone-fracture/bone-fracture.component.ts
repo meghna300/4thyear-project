@@ -22,6 +22,8 @@ export class BoneFractureComponent implements OnInit {
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log('ImageUpload:uploaded:', item, status, response);
+      console.log(JSON.parse(response)[5]);
+      this.result  = JSON.parse(response)[5];
     };
   }
 
