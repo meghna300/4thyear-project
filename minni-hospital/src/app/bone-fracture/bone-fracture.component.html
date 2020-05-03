@@ -5,11 +5,11 @@
             <div class="upload-container">
                 <div class="dotted-container">
                     <p>Uplaod X-ray image:</p>
-                    <input #file type="file" accept="image/png,image/jpeg" (change)="fileEvent($event)">
+                    <input type="file" accept="image/png,image/jpeg" ng2FileSelect [uploader]="uploader">
                 </div>
             </div>
-            <button class="btn" (click)="showResult()">Upload Image</button>
-            <ngx-spinner></ngx-spinner>
+            <button class="btn" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload Image</button>
+            <!-- <ngx-spinner></ngx-spinner> -->
             <div class="result">
                 Result: {{result}}
             </div>
