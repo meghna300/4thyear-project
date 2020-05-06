@@ -1,18 +1,40 @@
-<div class="container">
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Ionic Map
+        </ion-title>
+    </ion-navbar>
+</ion-header>
 
-    <h1>Angular Google Maps with Places Search Example</h1>
+<ion-content padding>
+    <ion-item>
+        <ion-label>Select Place</ion-label>
+        <ion-select [(ngModel)]="isType" (ionChange)="nearbyPlace()">
+            <ion-option value="">Select</ion-option>
+            <ion-option value="hospital">Hospital</ion-option>
+            <ion-option value="restaurant">Restaurant</ion-option>
+            <ion-option value="bank">Bank</ion-option>
+            <ion-option value="airport">Airport</ion-option>
+            <ion-option value="library">Library</ion-option>
+            <ion-option value="gym">Gym</ion-option>
+            <ion-option value="atm">Atm</ion-option>
+            <ion-option value="shopping_mall">Shopping Mall</ion-option>
+            <ion-option value="police">Police Station</ion-option>
+            <ion-option value="zoo">Zoo</ion-option>
+        </ion-select>
+    </ion-item>
 
-    <div class="form-group">
-        <label>Enter address</label>
-        <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off"
-            autocapitalize="off" spellcheck="off" type="text" #search>
-    </div>
+    <ion-item>
+        <ion-label>Select Distance</ion-label>
+        <ion-select [(ngModel)]="isKM" (ionChange)="nearbyPlace()">
+            <ion-option value="500">Select</ion-option>
+            <ion-option value="2000">2 KM</ion-option>
+            <ion-option value="4000">4 KM</ion-option>
+            <ion-option value="6000">6 KM</ion-option>
+            <ion-option value="8000">8 KM</ion-option>
+        </ion-select>
+    </ion-item>
 
-    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
-    </agm-map>
+    <div #map id="map"></div>
 
-    <h5>Address: {{address}}</h5>
-    <div>Latitude: {{latitude}}</div>
-    <div>Longitude: {{longitude}}</div>
-</div>
+</ion-content>

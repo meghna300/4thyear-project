@@ -10,7 +10,8 @@ import { BloodReportComponent } from './blood-report/blood-report.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AgmCoreModule } from '@agm/core';
-
+import { Geolocation } from '@ionic-native/geolocation';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDDkQTBSz8E4vr8wRYu88Tmdb0jdX2B_8E',
       libraries: ['places']
-    })
+    }),
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
