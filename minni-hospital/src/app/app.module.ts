@@ -9,8 +9,7 @@ import { BrainTumorComponent } from './brain-tumor/brain-tumor.component';
 import { BloodReportComponent } from './blood-report/blood-report.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { Geolocation } from '@ionic-native/geolocation';
-import { IonicModule } from '@ionic/angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,7 @@ import { IonicModule } from '@ionic/angular';
     AppRoutingModule,
     NgxSpinnerModule,
     FileUploadModule,
-    IonicModule.forRoot()
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
