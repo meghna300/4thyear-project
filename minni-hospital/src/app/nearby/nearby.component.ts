@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
-import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { googlemaps } from 'googlemaps';
 
 @Component({
@@ -24,19 +23,13 @@ export class NearbyComponent implements OnInit {
   placeLoc;
   ngOnInit(): void {
   }
-  constructor(private ngZone: NgZone, private geolocation: Geolocation, platform: Platform) { }
+  constructor(private ngZone: NgZone, private geolocation: Geolocation) { }
 
   ionViewDidLoad() {
     this.loadMap();
   }
   loadMap() {
-    this.platform.ready().then(() => {
-
-      // set options..
-      const options = {
-        timeout: 2000
-      };
-      this.geolocation.getCurrentPosition(() => {} , null, options).then((position) => {
+      this.geolocation.getCurrentPosition((position) => {
 
       this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -52,10 +45,9 @@ export class NearbyComponent implements OnInit {
     }, (err) => {
       alert('err ' + err);
     });
-  });
   }
   /*--------------------Find Nearby Place------------------------*/
-  nearbyPlace() {
+nearbyPlace() {
     this.loadMap();
     this.markers = [];
     this.service = new google.maps.places.PlacesService(this.map);
@@ -67,7 +59,7 @@ export class NearbyComponent implements OnInit {
       this.callback(results, status);
     });
   }
-  callback(results, status) {
+callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < results.length; i++) {
@@ -75,7 +67,8 @@ export class NearbyComponent implements OnInit {
       }
     }
   }
-  createMarker(place) {
+// tslint:disable-next-line:align
+createMarker(place) {
     this.placeLoc = place;
     console.log('placeLoc', this.placeLoc);
     this.markers = new google.maps.Marker({
