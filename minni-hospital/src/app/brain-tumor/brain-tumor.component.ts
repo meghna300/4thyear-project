@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FileUploader } from 'ng2-file-upload';
+import { AppConstants } from '../Constants/routes';
 
-const URL = 'https://api-mini-hospital.herokuapp.com/api/bone';
+const URL = AppConstants.baseURL + '/api/brain';
 @Component({
   selector: 'app-brain-tumor',
   templateUrl: './brain-tumor.component.html',

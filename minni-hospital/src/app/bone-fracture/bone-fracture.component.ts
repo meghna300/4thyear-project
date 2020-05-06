@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // import { NgxSpinnerService } from 'ngx-spinner';
 import { FileUploader } from 'ng2-file-upload';
+import { AppConstants } from '../Constants/routes';
 
-const URL = 'https://api-mini-hospital.herokuapp.com/api/bone';
+const URL = AppConstants.baseURL + '/api/bone';
 @Component({
   selector: 'app-bone-fracture',
   templateUrl: './bone-fracture.component.html',
@@ -25,7 +26,7 @@ export class BoneFractureComponent implements OnInit {
       this.isLoading = false;
       console.log('ImageUpload:uploaded:', item, status, response);
       console.log(JSON.parse(response)[5]);
-      this.result  = JSON.parse(response)[5];
+      this.result = JSON.parse(response)[5];
     };
   }
   loader() {
