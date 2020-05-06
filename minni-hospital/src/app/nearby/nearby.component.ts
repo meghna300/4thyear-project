@@ -31,16 +31,20 @@ export class NearbyComponent implements OnInit {
   loadMap() {
       this.geolocation.getCurrentPosition((position) => {
 
-      this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  constructor(private mapsAPILoader: MapsAPILoader,
+              private ngZone: NgZone ) { }
 
-      console.log('latLng', this.latLng);
-
-      this.mapOptions = {
-        center: this.latLng,
-        zoom: 14,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
+  ngOnInit(): void {
+    this.mapsAPILoader.load().then(() => {
+      this.setCurrentLocation();
+      // tslint:disable-next-line:new-parens
+      this.geoCoder = new google.maps.Geocoder;
+      this.autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      this.autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          // get the place result
+          // tslint:disable-next-line:prefer-const
+          let place: google.maps.places.PlaceResult = this.autocomplete.getPlace();
 
     }, (err) => {
       alert('err ' + err);
@@ -77,11 +81,6 @@ createMarker(place) {
     });
     const infowindow = new google.maps.InfoWindow();
 
-    google.maps.event.addListener(this.markers, 'click', () => {
-      this.ngZone.run(() => {
-        infowindow.setContent(place.name);
-        infowindow.open(this.map, this.markers);
-      });
     });
   }
 }
