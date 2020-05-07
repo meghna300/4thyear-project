@@ -23,9 +23,17 @@
     color:#000000;
     margin-left: 40px;
     margin-top: 40px;
-
-
 }
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 2em;
+    text-align: center;
+  }
+  .title-content {
+    text-align: center;
+  }
+}
+
 .title-content{
     margin-left:40px;
     font-size: 2em;
@@ -48,4 +56,7 @@
 }
 .active{
     color: #000000;
+}
+.footer {
+  margin: 5rem;
 }

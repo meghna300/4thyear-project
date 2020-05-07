@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoneFractureComponent } from './bone-fracture/bone-fracture.component';
 import { BrainTumorComponent } from './brain-tumor/brain-tumor.component';
-import { BloodReportComponent } from './blood-report/blood-report.component';
+import { DiseaseAnalysisComponent } from './disease-analysis/disease-analysis.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     BoneFractureComponent,
     BrainTumorComponent,
-    BloodReportComponent,
+    DiseaseAnalysisComponent,
     NearbyComponent
   ],
   imports: [
