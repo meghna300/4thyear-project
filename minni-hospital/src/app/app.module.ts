@@ -10,6 +10,7 @@ import { DiseaseAnalysisComponent } from './disease-analysis/disease-analysis.co
 import { NearbyComponent } from './nearby/nearby.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgxSpinnerModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule, AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBdjUnSIFoDNuXP9mffBuOSoGBhav--blc',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
