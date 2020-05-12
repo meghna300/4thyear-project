@@ -16,6 +16,7 @@ export class NearbyComponent implements OnInit {
   longitude: number;
   zoom: number;
   address: string;
+  result: [];
   private geoCoder;
   autocomplete;
   URL = AppConstants.baseURL + '/api/nearby-hospitals';
@@ -96,7 +97,8 @@ export class NearbyComponent implements OnInit {
     response => {
     console.log(response);
     this.hospitals = response;
-    console.log(this.hospitals);
+    this.result = this.hospitals.results;
+    console.log(this.hospitals.results);
       }, (err: HttpErrorResponse) => {
       console.log(err);
     });

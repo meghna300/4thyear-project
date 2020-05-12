@@ -16,12 +16,12 @@
     <div>Latitude: {{latitude}}</div>
     <div>Longitude: {{longitude}}</div>
 
-    <div class="row">
-        <ul class="col-md-6">
-            <li *ngFor = "let h of hospitals">
-                <span>{{ h.name }}</span>
-                <span>{{ h.rating }}</span>
-                <span>{{ h.vicinity }}</span>
+    <div class="row hospitals">
+        <ul class="col-md-12">
+            <li *ngFor = "let r of result" class="results">
+                <span class="data">Name:  {{ r.name }}</span>
+                <span class="data">Rating:  {{ r.rating }}</span>
+                <span class="data">Adress:  {{ r.vicinity }}</span>
 
             </li>
         </ul>
